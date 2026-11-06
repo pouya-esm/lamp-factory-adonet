@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="src\LampFactory.API\LampFactory.API.csproj" Id="a1b2c3d4-0001-4000-8000-000000000001" />
+  <Project Path="src\LampFactory.Application\LampFactory.Application.csproj" Id="a1b2c3d4-0002-4000-8000-000000000002" />
+  <Project Path="src\LampFactory.Domain\LampFactory.Domain.csproj" Id="a1b2c3d4-0003-4000-8000-000000000003" />
+  <Project Path="src\LampFactory.Infrastructure\LampFactory.Infrastructure.csproj" Id="a1b2c3d4-0004-4000-8000-000000000004" />
+  <Project Path="tests\LampFactory.Domain.Tests\LampFactory.Domain.Tests.csproj" Id="a1b2c3d4-0005-4000-8000-000000000005" />
+  <Project Path="tests\LampFactory.Application.Tests\LampFactory.Application.Tests.csproj" Id="a1b2c3d4-0006-4000-8000-000000000006" />
+  <Project Path="tests\LampFactory.Infrastructure.IntegrationTests\LampFactory.Infrastructure.IntegrationTests.csproj" Id="a1b2c3d4-0007-4000-8000-000000000007" />
+  <Project Path="tests\LampFactory.API.FunctionalTests\LampFactory.API.FunctionalTests.csproj" Id="a1b2c3d4-0008-4000-8000-000000000008" />
+</Solution>

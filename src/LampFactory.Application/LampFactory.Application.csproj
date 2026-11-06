@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>LampFactory.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Application depends only on Domain; Infrastructure implements the
+         interfaces declared here (dependency inversion). -->
+    <ProjectReference Include="..\LampFactory.Domain\LampFactory.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

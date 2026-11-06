@@ -1,0 +1,30 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{cs,csx}]
+# Prefer explicit access modifiers and immutable collections; keep the codebase
+# consistent without being preachy about trivia.
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+
+[*.cs]
+# Analyzers: treat the project's own correctness rules as warnings, never as
+# build-breaking errors, so the solution stays green on machines without the
+# Roslyn analyzer pack installed.
+dotnet_analyzer_diagnostic.severity = warning
+
+[*.{xml,config,props,targets,items}]
+indent_size = 2
+
+[*.{json,yml,yaml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

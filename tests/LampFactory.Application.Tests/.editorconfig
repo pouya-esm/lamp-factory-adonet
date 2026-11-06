@@ -1,0 +1,7 @@
+# Scoped to test projects only: this repository's test convention is
+# Namespace_WhenCondition_Expectation-style member names, which CA1707 flags.
+# Test names are a deliberate exception; production code keeps the warning.
+root = false
+
+[*.cs]
+dotnet_diagnostic.CA1707.severity = none

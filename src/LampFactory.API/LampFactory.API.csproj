@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <RootNamespace>LampFactory.API</RootNamespace>
+    <!-- Local development secrets (Jwt:Key) live in the user-secrets store;
+         appsettings.json in the repository intentionally holds no real values. -->
+    <UserSecretsId>9f8c3a2e-7d16-46b9-a1b4-6f12a7ee5c48</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.12.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.16.18" />
+    <PackageReference Include="Scalar.AspNetCore.Microsoft" Version="2.16.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- API composes the whole stack: it is the only project allowed to know
+         about Infrastructure, so the composition root lives here. -->
+    <ProjectReference Include="..\LampFactory.Application\LampFactory.Application.csproj" />
+    <ProjectReference Include="..\LampFactory.Infrastructure\LampFactory.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <!-- Stop a running instance before build so MSBuild can overwrite the apphost. -->
+  <Target Name="KillRunningAppBeforeBuild" BeforeTargets="Build;Rebuild">
+    <Exec Command='taskkill /F /IM "LampFactory.API.exe" 2&gt;nul'
+          Condition="$([MSBuild]::IsOSPlatform('windows'))"
+          IgnoreExitCode="true" />
+  </Target>
+
+</Project>
