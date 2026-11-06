@@ -71,42 +71,42 @@ reuse revocation) and the client behavior documented in
 sequenceDiagram
     autonumber
     participant C as Client
-    participant AUTH as AuthService<br/>(Infrastructure)
+    participant AUTH as "AuthService (Infrastructure)"
     participant DB as SQL Server
     participant J as JwtTokenService
 
     rect rgb(232, 244, 255)
     Note over C,J: Login — POST /api/Auth/login (anonymous)
-    C->>AUTH: LoginDTO { username, password }
-    AUTH->>DB: load users, find match, compare u.Userpass == model.Password (plaintext)
+    C->>AUTH: "LoginDTO { username, password }"
+    AUTH->>DB: "load users, find match, compare u.Userpass == model.Password (plaintext)"
     alt no match
-        AUTH-->>C: 401 { "message": "Incorrect username or password." }
+        AUTH-->>C: "401 { message: Incorrect username or password. }"
     else match
-        J->>J: HMAC-SHA256 access token (5 min,<br/>NameIdentifier + Name claims)
-        J->>J: opaque refresh token (64 random bytes,<br/>7-day row in RefreshToken)
-        AUTH-->>C: 200 { accessToken, refreshToken } — NOT the envelope
+        J->>J: "HMAC-SHA256 access token (5 min, NameIdentifier and Name claims)"
+        J->>J: "opaque refresh token (64 random bytes, 7-day row in RefreshToken)"
+        AUTH-->>C: "200 { accessToken, refreshToken } — NOT the envelope"
         C->>C: store both in localStorage
     end
     end
 
     rect rgb(240, 255, 240)
     Note over C,J: Access-token use — business endpoints
-    C->>C: every request carries Bearer <accessToken>
-    Note over C: 401 paths: missing/invalid token → [Authorize]/filter;<br/>5-min expiry → proactive 30-s refresh in the client
+    C->>C: every request carries Bearer accessToken
+    Note over C: "401 paths: missing/invalid token → Authorize/filter, 5-min expiry → proactive 30-s refresh in the client"
     end
 
     rect rgb(255, 243, 224)
     Note over C,J: Rotation — POST /api/Auth/refresh (anonymous)
-    C->>AUTH: RefreshRequestDTO { refreshToken }
-    AUTH->>DB: look up token row (expiry, revocation flag)
+    C->>AUTH: "RefreshRequestDTO { refreshToken }"
+    AUTH->>DB: "look up token row (expiry, revocation flag)"
     alt unknown / expired / already revoked
-        AUTH-->>C: 401 { "message": reason }
-        Note over AUTH,DB: reuse (already-revoked) is treated as theft:<br/>all sessions of that user are revoked
+        AUTH-->>C: "401 { message: reason }"
+        Note over AUTH,DB: reuse (already-revoked) is treated as theft,all sessions of that user are revoked
         C->>C: forced logout, reason shown on /login
     else valid
         AUTH->>DB: revoke presented token (single-use)
-        J->>J: issue new access + refresh pair
-        AUTH-->>C: 200 { accessToken, refreshToken }
+        J->>J: "issue a new access and refresh pair"
+        AUTH-->>C: "200 { accessToken, refreshToken }"
     end
     end
 ```

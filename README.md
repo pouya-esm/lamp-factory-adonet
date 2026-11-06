@@ -22,8 +22,8 @@ API with a raw ADO.NET persistence layer.
 
 ![Login page of the running Lamp Factory React client — SKD ERP branding with
 username and password fields](docs/assets/login-page.png)
-*Login page of the running React client, captured from the local development
-build (no real credentials involved).*
+_Login page of the running React client, captured from the local development
+build (no real credentials involved)._
 
 ## Implemented features (verified from source)
 
@@ -45,17 +45,17 @@ build (no real credentials involved).*
 
 ## Technology stack (versions from the project files)
 
-| Component | Technology | Version |
-|---|---|---|
-| Backend runtime | .NET (SDK pinned) | `10.0.401` (`global.json`) |
-| API framework | ASP.NET Core (controllers) | net10.0 |
-| Data access | ADO.NET / Microsoft.Data.SqlClient | `7.0.2` |
-| Validation | FluentValidation.DependencyInjectionExtensions | `12.1.1` |
-| Auth | Microsoft.AspNetCore.Authentication.JwtBearer | `10.0.10` |
-| API docs | Microsoft.AspNetCore.OpenApi + Scalar.AspNetCore | `10.0.11` / `2.16.18` |
-| Frontend | React + Vite + Tailwind | React `18.3.1`, Vite `5.4.8`, Tailwind `3.4.13` |
-| Routing / HTTP client | react-router-dom, axios, jwt-decode | `6.26.2`, `1.7.7`, `4.0.0` |
-| Tests | xunit + NSubstitute + Mvc.Testing | `2.9.3`, `5.3.0`, `10.0.10` |
+| Component             | Technology                                       | Version                                         |
+| --------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| Backend runtime       | .NET (SDK pinned)                                | `10.0.401` (`global.json`)                      |
+| API framework         | ASP.NET Core (controllers)                       | net10.0                                         |
+| Data access           | ADO.NET / Microsoft.Data.SqlClient               | `7.0.2`                                         |
+| Validation            | FluentValidation.DependencyInjectionExtensions   | `12.1.1`                                        |
+| Auth                  | Microsoft.AspNetCore.Authentication.JwtBearer    | `10.0.10`                                       |
+| API docs              | Microsoft.AspNetCore.OpenApi + Scalar.AspNetCore | `10.0.11` / `2.16.18`                           |
+| Frontend              | React + Vite + Tailwind                          | React `18.3.1`, Vite `5.4.8`, Tailwind `3.4.13` |
+| Routing / HTTP client | react-router-dom, axios, jwt-decode              | `6.26.2`, `1.7.7`, `4.0.0`                      |
+| Tests                 | xunit + NSubstitute + Mvc.Testing                | `2.9.3`, `5.3.0`, `10.0.10`                     |
 
 ## Architecture overview
 
@@ -79,15 +79,15 @@ graph LR
 
 ## Documentation
 
-| Document | Contents |
-|---|---|
-| [docs/architecture.md](docs/architecture.md) | Layers, dependency graph, request flow, Result→HTTP mapping, transactions |
-| [docs/database.md](docs/database.md) | Schema script, repository pattern, header-detail writes, inventory semantics |
-| [docs/api.md](docs/api.md) | Full endpoint reference — 96 actions, envelope contract, examples |
-| [docs/security.md](docs/security.md) | JWT, permissions, audit identity, secrets — and verified weaknesses |
-| [docs/development.md](docs/development.md) | Setup, secrets, run/build/test commands, troubleshooting |
-| [docs/testing.md](docs/testing.md) | The 4 test projects, DB dependency, observed results |
-| [docs/frontend.md](docs/frontend.md) | React client structure, auth flow, API connection, commands |
+| Document                                     | Contents                                                                     |
+| -------------------------------------------- | ---------------------------------------------------------------------------- |
+| [docs/architecture.md](docs/architecture.md) | Layers, dependency graph, request flow, Result→HTTP mapping, transactions    |
+| [docs/database.md](docs/database.md)         | Schema script, repository pattern, header-detail writes, inventory semantics |
+| [docs/api.md](docs/api.md)                   | Full endpoint reference — 96 actions, envelope contract, examples            |
+| [docs/security.md](docs/security.md)         | JWT, permissions, audit identity, secrets — and verified weaknesses          |
+| [docs/development.md](docs/development.md)   | Setup, secrets, run/build/test commands, troubleshooting                     |
+| [docs/testing.md](docs/testing.md)           | The 4 test projects, DB dependency, observed results                         |
+| [docs/frontend.md](docs/frontend.md)         | React client structure, auth flow, API connection, commands                  |
 
 ## Prerequisites
 
@@ -142,8 +142,11 @@ In Development the OpenAPI document is served at `/openapi/v1.json` and the
 **Scalar UI at `/scalar`** (verified against a running instance); both are
 disabled outside Development.
 
-
 ## License
 
 This project is licensed under the MIT License.
 See the [LICENSE](LICENSE) file for details.
+
+## Project status
+
+⚠️ This is a frozen reference implementation using raw ADO.NET for data access. Active development continues in lamp-factory-efcore.
